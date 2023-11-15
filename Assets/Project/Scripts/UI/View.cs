@@ -15,6 +15,10 @@ namespace RedPanda.Project.UI
         {
             UIService = uiService;
             Container = container;
+            
+            Init();
         }
+        
+        protected virtual void Init(){}
     }
 }

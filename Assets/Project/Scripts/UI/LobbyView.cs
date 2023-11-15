@@ -1,19 +1,16 @@
-using RedPanda.Project.Services;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace RedPanda.Project.UI
 {
     public sealed class LobbyView : View
     {
-        private void Awake()
-        {
-            //Example for services
-            //var promoService = Container.Locate<IPromoService>();
-            //UIService.Close();
-        }
-    }
+        [SerializeField] private Button _openPromo;
 
-    public sealed class PromoView : View
-    {
-        
+        private void Awake() => 
+            _openPromo.onClick.AddListener(OnOpenPromoClicked);
+
+        private void OnOpenPromoClicked() => 
+            UIService.Show("PromoView");
     }
 }

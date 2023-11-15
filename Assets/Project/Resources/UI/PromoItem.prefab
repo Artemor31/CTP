@@ -132,8 +132,9 @@ GameObject:
   - component: {fileID: 8886064383951203865}
   - component: {fileID: 7950042790490684617}
   - component: {fileID: 40583227225493931}
+  - component: {fileID: 6002822702903328542}
   m_Layer: 0
-  m_Name: OfferPreview
+  m_Name: PromoItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -214,6 +215,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AspectMode: 2
   m_AspectRatio: 0.67
+--- !u!114 &6002822702903328542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3664540215241453002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89801e1a2e6b41f58049756c5cebdb50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _title: {fileID: 7330560419291158341}
+  _cost: {fileID: 3805042945763102414}
 --- !u!1 &7208510547654727416
 GameObject:
   m_ObjectHideFlags: 0
@@ -630,7 +645,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4283309113
   m_fontColor: {r: 0.22352941, g: 0.10980392, b: 0.30588236, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3

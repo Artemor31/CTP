@@ -17,6 +17,9 @@ namespace RedPanda.Project
                 block.Export<UserService>().As<IUserService>().Lifestyle.Singleton();
                 block.Export<PromoService>().As<IPromoService>().Lifestyle.Singleton();
                 block.Export<UIService>().As<IUIService>().Lifestyle.Singleton();
+
+              //  block.ImportMembers<IUIService>(MembersThat.HaveAttribute<ImportAttribute>());
+             //   block.ImportMembers<IExportLocatorScope>(MembersThat.HaveAttribute<ImportAttribute>());
             });
 
             _container.Locate<IUserService>();

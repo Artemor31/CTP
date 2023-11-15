@@ -1,5 +1,6 @@
 using Grace.DependencyInjection;
 using RedPanda.Project.Services.Interfaces;
+using RedPanda.Project.UI;
 using UnityEngine;
 
 namespace RedPanda.Project.Services.UI
@@ -19,12 +20,21 @@ namespace RedPanda.Project.Services.UI
 
         void IUIService.Show(string viewName)
         {
+            _viewControl?.Close();
             _viewControl = new UIControl(viewName, _canvas, _container);
         }
 
-        public void Close(string viewName)
+        void IUIService.Close(string viewName)
         {
             _viewControl?.Close();
+        }
+
+        public TView CreateView<TView>(Transform parent) where TView : View
+        {
+            string name = typeof(TView).Name;
+            GameObject original = Resources.Load<GameObject>($"UI/{name}");
+            GameObject instance = Object.Instantiate(original, parent);
+            return instance.GetComponent<TView>();
         }
     }
 }
