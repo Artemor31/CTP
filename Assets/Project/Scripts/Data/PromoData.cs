@@ -1,0 +1,37 @@
+namespace RedPanda.Project.Data
+{
+    public class PromoData
+    {
+        public PromoType Type { get; }
+        public string Title { get; }
+        public PromoRarity Rarity { get; }
+        public int Cost { get; }
+
+        public PromoData(string title, PromoType type, PromoRarity rarity, int cost)
+        {
+            Title = title;
+            Type = type;
+            Rarity = rarity;
+            Cost = cost;
+        }
+
+        public string Icon()
+        {
+            return $"sprite_{Type.ToString().ToLower()}{Rarity.ToString().ToLower()}";
+        }
+    }
+
+    public enum PromoRarity
+    {
+        Common,
+        Rare,
+        Epic
+    }
+
+    public enum PromoType
+    {
+        Chest,
+        Special,
+        InApp
+    }
+}
