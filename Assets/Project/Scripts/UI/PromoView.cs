@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Grace.DependencyInjection;
-using Grace.DependencyInjection.Attributes;
 using RedPanda.Project.Data;
 using RedPanda.Project.Interfaces;
 using RedPanda.Project.Services.Interfaces;
@@ -15,11 +13,15 @@ namespace RedPanda.Project.UI
         [SerializeField] private Transform _rollsParent;
         
         private IPromoService _promoService;
-        private List<PromoRoll> _rolls = new();
+        private List<PromoRoll> _rolls;
+        private IUIFactory _factory;
 
         protected override void Init()
         {
             _promoService = Container.Locate<IPromoService>();
+            _factory = Container.Locate<IUIFactory>();
+            _rolls = new List<PromoRoll>();
+            
             IReadOnlyList<IPromoModel> models = _promoService.GetPromos();
             IEnumerable<PromoType> types = Enum.GetValues(typeof(PromoType)).Cast<PromoType>();
 
@@ -28,13 +30,19 @@ namespace RedPanda.Project.UI
         
         private void CreatePromoRolls(IEnumerable<PromoType> types, IReadOnlyList<IPromoModel> models)
         {
-            foreach (var type in types)
+            foreach (PromoType type in types)
             {
-                IEnumerable<IPromoModel> concretePromos = models.Where(m => m.Type == type);
-                PromoRoll roll = UIService.CreateView<PromoRoll>(_rollsParent);
-                roll.Setup(concretePromos);
+                PromoRoll roll = CreatePromoRoll(models, type);
                 _rolls.Add(roll);
             }
+        }
+
+        private PromoRoll CreatePromoRoll(IReadOnlyList<IPromoModel> models, PromoType type)
+        {
+            IEnumerable<IPromoModel> concretePromos = models.Where(m => m.Type == type);
+            PromoRoll roll = _factory.CreateView<PromoRoll>(_rollsParent);
+            roll.Setup(concretePromos, type.ToString());
+            return roll;
         }
     }
 }
