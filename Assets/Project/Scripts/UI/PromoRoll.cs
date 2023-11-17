@@ -14,10 +14,12 @@ namespace RedPanda.Project.UI
         private IEnumerable<IPromoModel> _concretePromos;
         private List<PromoItem> _items;
         private IUIFactory _factory;
+        private IUserService _userService;
 
         protected override void Init()
         {
             _factory = Container.Locate<IUIFactory>();
+            _userService = Container.Locate<IUserService>();
         }
 
         public void Setup(IEnumerable<IPromoModel> concretePromos, string headerText)
@@ -27,6 +29,28 @@ namespace RedPanda.Project.UI
             _items = new List<PromoItem>();
             
             CreatePromoItems();
+            SubscribeOnItems();
+        }
+
+        private void SubscribeOnItems()
+        {
+            foreach (PromoItem item in _items)
+            {
+                item.Clicked += OnItemClicked;
+            }
+        }
+
+        private void OnItemClicked(PromoItem item)
+        {
+            if (_userService.HasCurrency(item.Cost))
+            {
+                _userService.ReduceCurrency(item.Cost);
+                Debug.LogError("Good");
+            }
+            else
+            {
+                Debug.LogError("Bad");
+            }
         }
 
         private void CreatePromoItems()

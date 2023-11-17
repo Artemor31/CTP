@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: c91eedfe6ee44bb8b8a35b212ea169b2, type: 3}
   m_Name: PromoViewConfig
   m_EditorClassIdentifier: RedPanda.Project:RedPanda.Project.Data:PromoViewConfig
   _rarityDatas:
@@ -17,14 +17,14 @@ MonoBehaviour:
     Type: 0
     Icon: {fileID: 21300000, guid: b85a726f648808949b038ab32fda92f5, type: 3}
     Back: {fileID: 21300000, guid: f34cd001841e7fb478eeef5bdd8e2a1d, type: 3}
-  - Rarity: 2
-    Type: 0
-    Icon: {fileID: 21300000, guid: 8542fa350ce5cd048acec7e0d005c13c, type: 3}
-    Back: {fileID: 21300000, guid: 54eacff0100aa6e41bb852cf6af60702, type: 3}
   - Rarity: 1
     Type: 0
     Icon: {fileID: 21300000, guid: fe4221b4225a1374ea055db250ddf794, type: 3}
     Back: {fileID: 21300000, guid: b26c30ef7d260b34996f74567bc0e09b, type: 3}
+  - Rarity: 2
+    Type: 0
+    Icon: {fileID: 21300000, guid: 8542fa350ce5cd048acec7e0d005c13c, type: 3}
+    Back: {fileID: 21300000, guid: 54eacff0100aa6e41bb852cf6af60702, type: 3}
   - Rarity: 0
     Type: 2
     Icon: {fileID: 21300000, guid: 806a30ab725a3064d88865068ac88436, type: 3}
