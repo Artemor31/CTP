@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c91eedfe6ee44bb8b8a35b212ea169b2, type: 3}
   m_Name: PromoViewConfig
-  m_EditorClassIdentifier: RedPanda.Project:RedPanda.Project.Data:PromoViewConfig
+  m_EditorClassIdentifier: 
   _rarityDatas:
   - Rarity: 0
     Type: 0
