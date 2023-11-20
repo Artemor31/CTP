@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using RedPanda.Project.Interfaces;
 using RedPanda.Project.Services.Interfaces;
 using TMPro;
@@ -11,7 +12,7 @@ namespace RedPanda.Project.UI
         [SerializeField] private Transform _parent;
         [SerializeField] private TMP_Text _header;
         
-        private IEnumerable<IPromoModel> _concretePromos;
+        private IEnumerable<IPromoModel> _models;
         private List<PromoItem> _items;
         private IUIFactory _factory;
         private IUserService _userService;
@@ -22,9 +23,9 @@ namespace RedPanda.Project.UI
             _userService = Container.Locate<IUserService>();
         }
 
-        public void Setup(IEnumerable<IPromoModel> concretePromos, string headerText)
+        public void Setup(IEnumerable<IPromoModel> promoModels, string headerText)
         {
-            _concretePromos = concretePromos;
+            _models = promoModels.OrderByDescending(m => m.Rarity);
             _header.text = headerText;
             _items = new List<PromoItem>();
             
@@ -55,7 +56,7 @@ namespace RedPanda.Project.UI
 
         private void CreatePromoItems()
         {
-            foreach (IPromoModel model in _concretePromos)
+            foreach (IPromoModel model in _models)
             {
                 PromoItem item = _factory.CreateView<PromoItem>(_parent);
                 item.Setup(model);

@@ -5,8 +5,8 @@ using UnityEngine;
 
 namespace RedPanda.Project.Data
 {
-    [CreateAssetMenu(menuName = "Create PromoViewConfig", fileName = "PromoViewConfig", order = 0)]
-    public class PromoViewConfig : ScriptableObject
+    [CreateAssetMenu(menuName = "Create PromoItemsConfig", fileName = "PromoItemsConfig", order = 0)]
+    public class PromoItemsConfig : ScriptableObject
     {
         [SerializeField] private List<PromoViewData> _rarityDatas;
 

@@ -21,12 +21,12 @@ namespace RedPanda.Project.UI
         [SerializeField] private Button _button;
         
         private IAssetService _assetService;
-        private PromoViewConfig _promoViewConfig;
+        private PromoItemsConfig _promoViewConfig;
 
         protected override void Init()
         {
             _assetService = Container.Locate<IAssetService>();
-            _promoViewConfig = _assetService.Load<PromoViewConfig>(AssetPath.PromoViewConfig);
+            _promoViewConfig = _assetService.Load<PromoItemsConfig>(AssetPath.PromoItemsConfig);
             _button.onClick.AddListener(() =>
             {
                 Clicked?.Invoke(this);
