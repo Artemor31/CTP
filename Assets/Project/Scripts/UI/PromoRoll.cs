@@ -46,11 +46,11 @@ namespace RedPanda.Project.UI
             if (_userService.HasCurrency(item.Cost))
             {
                 _userService.ReduceCurrency(item.Cost);
-                Debug.LogError("Good");
+                Debug.LogError($"Bought {item.Title}");
             }
             else
             {
-                Debug.LogError("Bad");
+                Debug.LogError("NOt enought credits");
             }
         }
 

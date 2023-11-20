@@ -13,6 +13,7 @@ namespace RedPanda.Project.UI
     {
         public event Action<PromoItem> Clicked;
         public int Cost { get; private set; } 
+        public string Title { get; private set; } 
         
         [SerializeField] private TMP_Text _title;
         [SerializeField] private TMP_Text _cost;
@@ -39,6 +40,7 @@ namespace RedPanda.Project.UI
             _title.text = model.Title;
             _cost.text = $"x{model.Cost}";
             Cost = model.Cost;
+            Title = model.Title;
 
             _icon.sprite = _promoViewConfig.GetIconFor(model.Rarity, model.Type);
             _back.sprite = _promoViewConfig.GetBackFor(model.Rarity, model.Type);
